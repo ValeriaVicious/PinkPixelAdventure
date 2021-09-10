@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 559063533782086402}
   - component: {fileID: 559063533782086401}
-  - component: {fileID: 559063533782086403}
   - component: {fileID: 1438213120816494796}
   m_Layer: 0
   m_Name: Pinky
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 559063533782086400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,21 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &559063533782086403
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559063533782086400}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &1438213120816494796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterSprite: {fileID: 559063533782086401}
+  Transform: {fileID: 559063533782086402}
+  Collider: {fileID: 0}
+  Rigidbody: {fileID: 0}
