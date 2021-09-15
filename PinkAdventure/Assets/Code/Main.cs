@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace PinkAdventure
+namespace Adventure
 {
     public class Main : MonoBehaviour
     {
@@ -11,6 +11,7 @@ namespace PinkAdventure
         [SerializeField] private LevelObjectView _playerView;
 
         private SpriteAnimator _spriteAnimator;
+        private PlayerController _playerController;
 
         #endregion
 
@@ -30,12 +31,12 @@ namespace PinkAdventure
             {
                 _spriteAnimator.StartAnimation(_playerView.CharacterSprite, Track.Idle, true, 10.0f);
             }
-
+            _playerController = new PlayerController(_playerView, _spriteAnimator);
         }
 
         private void Update()
         {
-            _spriteAnimator.Execute();
+            _playerController.Execute();
         }
 
         private void FixedUpdate()

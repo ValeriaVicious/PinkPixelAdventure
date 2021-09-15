@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace PinkAdventure
+namespace Adventure
 {
     public class SpriteAnimator : IDisposable
     {
