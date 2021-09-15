@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Adventure
+namespace PinkAdventure
 {
     [CreateAssetMenu(fileName = "SpriteAnimationsConfig",
         menuName = "Configs/SpriteAnimationsConfig", order = 1)]

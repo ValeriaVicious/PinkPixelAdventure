@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Adventure
+namespace PinkAdventure
 {
     internal sealed class LevelObjectView : MonoBehaviour
     {

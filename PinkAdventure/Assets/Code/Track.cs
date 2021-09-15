@@ -1,6 +1,6 @@
 ﻿
 
-namespace Adventure
+namespace PinkAdventure
 {
     public enum Track
     {

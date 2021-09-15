@@ -1,11 +1,9 @@
 ﻿
 
-namespace Adventure
+namespace PinkAdventure
 {
     public sealed class Constants
     {
         public const string SpriteAnimationsConfig = "PlayerAnimConfig";
-        public const string HorizontalInput = "Horizontal";
-        public const string VerticalInput = "Vertical";
     }
 }
