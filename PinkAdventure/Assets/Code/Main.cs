@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace PinkAdventure
+namespace Adventure
 {
     public class Main : MonoBehaviour
     {

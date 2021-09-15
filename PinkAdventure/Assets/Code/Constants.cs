@@ -1,6 +1,6 @@
 ﻿
 
-namespace PinkAdventure
+namespace Adventure
 {
     public sealed class Constants
     {
