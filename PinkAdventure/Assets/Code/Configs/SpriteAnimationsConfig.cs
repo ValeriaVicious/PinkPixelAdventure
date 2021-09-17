@@ -5,8 +5,7 @@ using UnityEngine;
 
 namespace Adventure
 {
-    [CreateAssetMenu(fileName = "SpriteAnimationsConfig",
-        menuName = "Configs/SpriteAnimationsConfig", order = 1)]
+    [CreateAssetMenu(fileName = nameof(SpriteAnimationsConfig), menuName = "Configs/" + nameof(SpriteAnimationsConfig), order = 1)]
     public sealed class SpriteAnimationsConfig : ScriptableObject
     {
         [Serializable]
