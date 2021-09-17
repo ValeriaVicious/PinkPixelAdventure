@@ -3,7 +3,7 @@
 
 namespace Adventure
 {
-    internal sealed class LevelObjectView : MonoBehaviour
+    public sealed class LevelObjectView : MonoBehaviour
     {
         #region Fields
 
