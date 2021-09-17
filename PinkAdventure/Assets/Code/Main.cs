@@ -1,16 +1,15 @@
+using System;
 using UnityEngine;
 
 
 namespace Adventure
 {
-    public class Main : MonoBehaviour
+    public class Main : MonoBehaviour, IDisposable
     {
         #region Fields
 
-        [SerializeField] private SpriteAnimationsConfig _playerAnimationsConfig;
-        [SerializeField] private LevelObjectView _playerView;
-
-        private SpriteAnimator _spriteAnimator;
+        [SerializeField] private GameConfig _gameConfig;
+        private CompositeControllers _controllers;
 
         #endregion
 
@@ -19,33 +18,35 @@ namespace Adventure
 
         private void Awake()
         {
-            _playerAnimationsConfig = Resources.Load<SpriteAnimationsConfig>(Constants.SpriteAnimationsConfig);
+            _controllers = new CompositeControllers();
+            var gameInitialization = new GameInitialization(_controllers, _gameConfig);
+        }
 
-            if (_playerAnimationsConfig)
-            {
-                _spriteAnimator = new SpriteAnimator(_playerAnimationsConfig);
-            }
-
-            if (_playerView)
-            {
-                _spriteAnimator.StartAnimation(_playerView.CharacterSprite, Track.Idle, true, 10.0f);
-            }
-
+        private void Start()
+        {
+            _controllers.Initialization();
         }
 
         private void Update()
         {
-            _spriteAnimator.Execute();
+            var deltaTime = Time.deltaTime;
+            _controllers.Execute(deltaTime);
         }
 
         private void FixedUpdate()
         {
-
+            var deltaTime = Time.deltaTime;
+            _controllers.FixedExecute(deltaTime);
         }
 
         private void OnDestroy()
         {
 
+        }
+
+        public void Dispose()
+        {
+            _controllers.Cleanup();
         }
 
         #endregion

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Adventure
 {
-    public class SpriteAnimator : IDisposable
+    public class SpriteAnimator : IExecute, ICleanup
     {
         private sealed class Animation
         {
@@ -23,16 +23,13 @@ namespace Adventure
 
             #region Methods
 
-            public void Execute()
+            public void Execute(float deltaTime)
             {
                 if (IsSleep)
                 {
                     return;
                 }
-                else
-                {
-                    Counter += Time.deltaTime * Speed;
-                }
+                Counter += deltaTime * Speed;
 
                 if (IsLoop)
                 {
@@ -113,7 +110,7 @@ namespace Adventure
         {
             foreach (var animation in _activeAnimation)
             {
-                animation.Value.Execute();
+                animation.Value.Execute(Time.deltaTime);
                 if (animation.Value.Counter < animation.Value.Sprites.Count)
                 {
                     animation.Key.sprite = animation.Value.Sprites[(int)animation.Value.Counter];
@@ -122,9 +119,18 @@ namespace Adventure
             }
         }
 
-        public void Dispose()
+        public void Cleanup()
         {
             _activeAnimation.Clear();
+        }
+
+        public void Execute(float deltaTime)
+        {
+            foreach (var item in _activeAnimation)
+            {
+                item.Value.Execute(deltaTime);
+                item.Key.sprite = item.Value.Sprites[(int)item.Value.Counter];
+            }
         }
 
         #endregion

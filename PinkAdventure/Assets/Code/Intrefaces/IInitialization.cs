@@ -2,7 +2,7 @@
 
 namespace Adventure
 {
-    public interface IInitialization
+    public interface IInitialization : IController
     {
         public void Initialization();
     }
