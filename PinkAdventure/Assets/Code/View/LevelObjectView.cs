@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 namespace Adventure
@@ -11,6 +12,8 @@ namespace Adventure
         public SpriteRenderer CharacterSprite;
         public Collider2D Collider;
         public Rigidbody2D Rigidbody;
+
+        public Action<Track> OnStateChange;
 
         #endregion
 
