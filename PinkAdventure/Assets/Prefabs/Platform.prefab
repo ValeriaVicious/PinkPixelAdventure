@@ -41,14 +41,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8209094220817203242}
     m_Modifications:
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 586648669
-      objectReference: {fileID: 0}
     - target: {fileID: 7198977360890002191, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -111,14 +103,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8209094220817203242}
     m_Modifications:
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 586648669
-      objectReference: {fileID: 0}
     - target: {fileID: 7198977360890002191, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -181,14 +165,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8209094220817203242}
     m_Modifications:
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 586648669
-      objectReference: {fileID: 0}
     - target: {fileID: 7198977360890002191, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -251,14 +227,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8209094220817203242}
     m_Modifications:
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2920542211543363022, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 586648669
-      objectReference: {fileID: 0}
     - target: {fileID: 7198977360890002191, guid: 1675eec3fbcf47443bb6c4fa750d2413, type: 3}
       propertyPath: m_RootOrder
       value: 1
