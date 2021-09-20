@@ -3,7 +3,7 @@
 
 namespace Adventure
 {
-    public sealed class ContactPoller : IExecute
+    public sealed class ContactPoller : IFixedExecute
     {
         #region Fields
 
@@ -36,7 +36,7 @@ namespace Adventure
 
         #region Methods
 
-        public void Execute(float deltaTime)
+        public void FixedExecute(float deltaTime)
         {
             IsGrounded = false;
             HasLeftContact = false;

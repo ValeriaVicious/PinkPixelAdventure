@@ -46,7 +46,8 @@ namespace Adventure
                 Track.DoubleJump => Track.DoubleJump,
                 Track.Fall => Track.Fall,
                 Track.Hit => Track.Hit,
-                Track.WallJump => Track.WallJump
+                Track.WallJump => Track.WallJump,
+                _ => throw new NotImplementedException()
             };
         }
 

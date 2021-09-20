@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Adventure
 {
-    public class Main : MonoBehaviour, IDisposable
+    public class Main : MonoBehaviour, ICleanup
     {
         #region Fields
 
@@ -35,7 +35,7 @@ namespace Adventure
 
         private void FixedUpdate()
         {
-            var deltaTime = Time.deltaTime;
+            var deltaTime = Time.fixedDeltaTime;
             _controllers.FixedExecute(deltaTime);
         }
 
@@ -44,7 +44,7 @@ namespace Adventure
 
         }
 
-        public void Dispose()
+        public void Cleanup()
         {
             _controllers.Cleanup();
         }

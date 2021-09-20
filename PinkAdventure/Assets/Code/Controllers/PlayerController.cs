@@ -3,23 +3,23 @@
 
 namespace Adventure
 {
-    public sealed class PlayerController : IExecute
+    public sealed class PlayerController : IFixedExecute
     {
         #region Fields
 
         private readonly PlayerConfig _playerConfig;
         private readonly LevelObjectView _view;
+        private readonly ContactPoller _contactPoller;
         private Track _currentTrack = Track.Idle;
-
         private Vector3 _rightVector = new Vector3(1.0f, 0.0f, 0.0f);
         private Vector3 _upVector = new Vector3(0.0f, 1.0f, 0.0f);
         private Vector3 _leftScale = new Vector3(-1.0f, 1.0f, 1.0f);
         private Vector3 _rightScale = new Vector3(1.0f, 1.0f, 1.0f);
-        private float _yVelocity;
+        private float _yVelocity = 0.0f;
+        private float _xVelocity = 0.0f;
         private float _xAxisInput;
         private float _accelerationOfGravity = -9.8f;
         private bool _isJump;
-        private bool _isGrounded;
 
         #endregion
 
@@ -30,6 +30,7 @@ namespace Adventure
         {
             _playerConfig = player;
             _view = view;
+            _contactPoller = new ContactPoller(_view.Collider);
         }
 
         #endregion
@@ -39,12 +40,9 @@ namespace Adventure
 
         private void GoSideAway(float deltaTime)
         {
-            var speed = deltaTime * _playerConfig.WalkSpeed;
-            _rightVector.Set(speed * _xAxisInput, 0.0f, 0.0f);
-            _leftScale.Set(Mathf.Sign(_xAxisInput), _leftScale.y, _leftScale.z);
-
-            _view.Transform.position += _rightVector;
-            _view.Transform.localScale = _leftScale;
+            _xVelocity = _playerConfig.WalkSpeed * deltaTime * (_xAxisInput < 0 ? -1.0f : 1.0f);
+            _view.Rigidbody.velocity = _view.Rigidbody.velocity.Change(x: _xVelocity);
+            _view.Transform.localScale = (_xAxisInput < 0.0f ? _leftScale : _rightScale);
         }
 
         private bool IsGrounded()
@@ -53,29 +51,28 @@ namespace Adventure
                 float.Epsilon && _yVelocity <= 0.0f;
         }
 
-        public void Execute(float deltaTime)
+        public void FixedExecute(float deltaTime)
         {
+            _contactPoller.FixedExecute(deltaTime);
             _isJump = Input.GetAxis(Constants.VerticalInput) > 0.0f;
             _xAxisInput = Input.GetAxis(Constants.HorizontalInput);
-            var goSideAway = Mathf.Abs(_xAxisInput) > _playerConfig.MovingThresh;
+            _yVelocity = _view.Rigidbody.velocity.y;
+
+            var goSideAway = Mathf.Abs(_xAxisInput) > _playerConfig.MovingThreshold;
             var previousTrack = _currentTrack;
 
-            if (IsGrounded())
+            if (goSideAway)
             {
-                if (goSideAway)
-                {
-                    GoSideAway(deltaTime);
-                }
+                GoSideAway(deltaTime);
+            }
+
+            if (_contactPoller.IsGrounded)
+            {
                 _currentTrack = goSideAway ? Track.Run : Track.Idle;
 
-                if (_isJump && _yVelocity == 0.0f)
+                if (_isJump && Mathf.Abs(_yVelocity) <= _playerConfig.JumpThreshold)
                 {
-                    _yVelocity = _playerConfig.JumpStartSpeed;
-                }
-                else if (_yVelocity < 0.0f)
-                {
-                    _yVelocity = 0.0f;
-                    _view.Transform.position = _view.Transform.position.Change(y: _playerConfig.GroundLevel);
+                    _view.Rigidbody.AddForce(_upVector * _playerConfig.JumpForce, ForceMode2D.Impulse);
                 }
             }
             else
@@ -84,12 +81,10 @@ namespace Adventure
                 {
                     GoSideAway(deltaTime);
                 }
-                if (Mathf.Abs(_yVelocity) > _playerConfig.FlyThresh)
+                if (Mathf.Abs(_yVelocity) > _playerConfig.JumpThreshold)
                 {
                     _currentTrack = Track.Jump;
                 }
-                _yVelocity += _accelerationOfGravity * Time.deltaTime;
-                _view.Transform.position += _upVector * (Time.deltaTime * _yVelocity);
             }
 
             if (_currentTrack != previousTrack)

@@ -15,8 +15,10 @@ MonoBehaviour:
   View: {fileID: 3287771201116526454, guid: 0f562f4127255bd4ca261d1966b98251, type: 3}
   SpriteAnimationsConfig: {fileID: 11400000, guid: 3e0e9642da088f04d80d72c038b196ad, type: 2}
   AnimationSpeed: 10
-  WalkSpeed: 3
+  WalkSpeed: 100
+  JumpForce: 8
   JumpStartSpeed: 8
-  MovingThresh: 0.1
-  FlyThresh: 1
+  MovingThreshold: 0.1
+  JumpThreshold: 0.1
+  FlyThreshold: 1
   GroundLevel: 0.5
