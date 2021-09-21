@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   PlayerConfig: {fileID: 11400000, guid: c6dea1e6e11d51e4a83b9b7a727b3dd2, type: 2}
+  BulletConfig: {fileID: 11400000, guid: 33e6ab68840fe324ea19cc347207da16, type: 2}
   Back: {fileID: 4149851656381095098, guid: 0f562f4127255bd4ca261d1966b98251, type: 3}

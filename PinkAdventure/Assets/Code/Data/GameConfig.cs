@@ -8,6 +8,7 @@ namespace Adventure
     {
         public PlayerConfig PlayerConfig;
         public BulletConfig BulletConfig;
+        public CannonView CannonView;
         public GameObject Back;
     }
 }
