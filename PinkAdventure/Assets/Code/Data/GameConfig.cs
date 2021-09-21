@@ -7,6 +7,7 @@ namespace Adventure
     public sealed class GameConfig : ScriptableObject
     {
         public PlayerConfig PlayerConfig;
+        public BulletConfig BulletConfig;
         public GameObject Back;
     }
 }
