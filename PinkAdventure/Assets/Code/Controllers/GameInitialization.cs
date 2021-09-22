@@ -14,8 +14,10 @@ namespace Adventure
             compositeControllers.Add(playerIntialization);
             compositeControllers.Add(new PlayerAnimationController(gameConfig.PlayerConfig, player));
             compositeControllers.Add(new PlayerController(gameConfig.PlayerConfig, player));
+
+            compositeControllers.Add(new CannonController(gameConfig.CannonView.MuzzleTransform, player.Transform));
+            compositeControllers.Add(new BulletEmitterController(gameConfig.CannonView.Bullets, gameConfig.CannonView.EmmiterTransform));
             compositeControllers.Add(new CameraController(player.Transform, camera.transform));
-            compositeControllers.Add(new BulletController(gameConfig.BulletConfig.BulletView));
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Adventure
         public BulletController(BulletView bulletView)
         {
             _bulletView = bulletView;
-            SetActive(false);
+            _bulletView.SetVisible(false);
         }
 
         #endregion
@@ -35,32 +35,18 @@ namespace Adventure
             if (IsGrounded())
             {
                 SetVelocity(_velocity.Change(y: -_velocity.y));
-                _bulletView.transform.position = _bulletView.transform.position.Change(y: _groundLevel + _radius);
+                _bulletView.Transform.position = _bulletView.Transform.position.Change(y: _groundLevel + _radius);
             }
             else
             {
                 SetVelocity(_velocity + _upVector * _accelerationOfGravity * deltaTime);
-                _bulletView.transform.position += _velocity * deltaTime;
+                _bulletView.Transform.position += _velocity * deltaTime;
             }
         }
 
-        private void Throw(Vector3 position, Vector3 velocity)
+        public void Throw(Vector3 position, Vector3 velocity)
         {
-            SetActive(true);
-            _bulletView.transform.position = position;
-            _bulletView.Rigidbody.velocity = Vector2.zero;
-            _bulletView.Rigidbody.angularVelocity = 0.0f;
-            _bulletView.Rigidbody.AddForce(velocity, ForceMode2D.Impulse);
-        }
-
-        private void SetActive(bool value)
-        {
-            _bulletView.gameObject.SetActive(value);
-        }
-
-        private void SetVelocity(Vector3 position, Vector3 velocity)
-        {
-            _bulletView.transform.position = position;
+            _bulletView.Transform.position = position;
             SetVelocity(velocity);
             _bulletView.SetVisible(true);
         }
@@ -70,12 +56,12 @@ namespace Adventure
             _velocity = velocity;
             var angle = Vector3.Angle(Vector3.left, _velocity);
             var axis = Vector3.Cross(Vector3.left, _velocity);
-            _bulletView.transform.rotation = Quaternion.AngleAxis(angle, axis);
+            _bulletView.Transform.rotation = Quaternion.AngleAxis(angle, axis);
         }
 
         private bool IsGrounded()
         {
-            return _bulletView.transform.position.y <= _groundLevel + _radius + float.Epsilon &&
+            return _bulletView.Transform.position.y <= _groundLevel + _radius + float.Epsilon &&
                 _velocity.y <= 0.0f;
         }
 

@@ -39,11 +39,6 @@ namespace Adventure
             _controllers.FixedExecute(deltaTime);
         }
 
-        private void OnDestroy()
-        {
-
-        }
-
         public void Cleanup()
         {
             _controllers.Cleanup();

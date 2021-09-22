@@ -8,6 +8,7 @@ namespace Adventure
         #region Fields
 
         public TrailRenderer TrailRenderer;
+        public Transform Transform;
         public Rigidbody2D Rigidbody;
         public Collider2D Collider;
 
