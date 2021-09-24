@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
-namespace PinkAdventure
+namespace Adventure
 {
-    internal sealed class LevelObjectView : MonoBehaviour
+    public sealed class LevelObjectView : MonoBehaviour
     {
         #region Fields
 
@@ -11,6 +12,8 @@ namespace PinkAdventure
         public SpriteRenderer CharacterSprite;
         public Collider2D Collider;
         public Rigidbody2D Rigidbody;
+
+        public Action<Track> OnStateChange;
 
         #endregion
 
